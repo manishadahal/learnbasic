@@ -1,7 +1,7 @@
-@extends('layout')
+@extends('layouts')
 
 @section('content')
 
-This is a new Home Page
+Welcome !! This is a new Home Page
 
 @endsection
