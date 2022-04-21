@@ -13,6 +13,8 @@
             <li><a href="/about/mansha/5">About</a></li>
             <li><a href="/demo">Demo Details</a></li>
             <li><a href="/course/laravel">Course </a></li>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/input">Component</a></li>
         </ul>
     </nav>
     <div style="margin: 40px">
