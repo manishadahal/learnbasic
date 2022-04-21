@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +30,9 @@ Route::get('/demo', function () {
 Route::get('/course/{name}', function ($name) {
     return view('course', compact('name'));
 });
+//form
+Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'index']);
+//component
+Route::post('/input', [ComponentController::class, 'input']);
+Route::get('/input', [ComponentController::class, 'index']);
