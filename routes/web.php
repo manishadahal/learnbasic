@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -36,3 +37,11 @@ Route::get('/register', [RegisterController::class, 'index']);
 //component
 Route::post('/input', [ComponentController::class, 'input']);
 Route::get('/input', [ComponentController::class, 'index']);
+//customer
+
+Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
+Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer', [CustomerController::class, 'view']);
+Route::post('/customer', [CustomerController::class, 'store']);
