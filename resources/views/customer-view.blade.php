@@ -1,6 +1,6 @@
 @extends('layouts')
 @section('content')
-<form action="{{url('customer.create')}}" method="POST">
+{{-- <form action="{{route('customer.create')}}" method="POST"> --}}
     <div class="container">
         <table class="table table border-2">
             <thead>
@@ -20,9 +20,15 @@
                     <td>{{$customer->phonenumber}}</td>
                     <td>{{$customer->dob}}</td>
                     <td>
-                        <button class="btn btn-danger">
+                        <a href="{{route('customer.delete', $customer->id)}}">
+                            <button class="btn btn-danger">
                             Delete
                         </button>
+                        <a href="{{route('customer.edit', $customer->id)}}">
+                            <button class="btn btn-danger">
+                            Edit
+                        </button>
+                        </a>
                     </td>
                 </tr>
 
@@ -30,5 +36,5 @@
             </tbody>
         </table>
     </div>
-</form>
+{{-- </form> --}}
 @endsection
