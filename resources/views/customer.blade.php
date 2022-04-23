@@ -1,6 +1,6 @@
 @extends('layouts')
 @section('content')
-<form action="/customer" method="POST">
+<form action="{{url('customer.store')}}" method="POST">
     @csrf
     <div class="container">
         <div class="form-group">
