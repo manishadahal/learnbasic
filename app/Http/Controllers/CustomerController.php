@@ -9,13 +9,16 @@ class CustomerController extends Controller
 {
     public function create()
     {
+        $customer = new Customer();
         $url = url('/customer');
-        $data = compact('url');
+        $data = compact('url', 'customer');
         return view('customer')->with($data);
     }
     public function store(Request $request)
     {
         //insert query
+        // printArray($request->all());
+        // die;
         $customer = new Customer;
         $customer->name = $request['name'];
         $customer->address = $request['address'];

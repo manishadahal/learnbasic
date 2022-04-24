@@ -11,4 +11,13 @@ class Customer extends Model
     protected $fillable = [
         'customer_id', 'name', 'address', 'phonenumber', 'dob', 'password',
     ];
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = ucwords($value);
+    }
+
+    public function getPhonenumberAttribute($value)
+    {
+        return "+977 " . $value;
+    }
 }
