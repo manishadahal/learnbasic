@@ -44,6 +44,9 @@ Route::get('/customer/create', [CustomerController::class, 'create'])->name('cus
 Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
 Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
 Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+Route::get('/customer/trash', [CustomerController::class, 'viewTrash'])->name('customer.trash');
+Route::get('/customer/forcedelete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.forcedelete');
+Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
 Route::get('/customer', [CustomerController::class, 'view']);
 Route::post('/customer', [CustomerController::class, 'store']);
 //session
