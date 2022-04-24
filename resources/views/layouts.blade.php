@@ -17,6 +17,7 @@
             <li><a href="{{url('register')}}">Register</a></li>
             <li><a href="/input">Component</a></li>
             <li><a href="{{url('/customer')}}">Customer</a></li>
+            <li><a href="{{route('upload-page')}}">File Upload</a></li>
 
         </ul>
     </nav>
