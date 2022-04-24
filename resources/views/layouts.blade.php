@@ -27,6 +27,11 @@
         <h3>
            Footer , Copywrite @2022
         </h3>
+        @if (session()->has('name'))
+        {{session()->get('name')}}
+        @else
+         Guest
+        @endif
     </footer>
 </body>
 </html>
