@@ -3,9 +3,11 @@
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +21,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/{lang?}', function ($lang = null) {
+//     App::setLocale($lang);
+//     return view('welcome');
+// });
 Route::get('/home', function () {
     return view('home');
 });
@@ -41,15 +47,18 @@ Route::post('/input', [ComponentController::class, 'input']);
 Route::get('/input', [ComponentController::class, 'index']);
 //customer
 
-Route::get('/customer/create', [CustomerController::class, 'create'])->name('customer.create');
-Route::get('/customer/delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
-Route::get('/customer/edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
-Route::post('/customer/update/{id}', [CustomerController::class, 'update'])->name('customer.update');
-Route::get('/customer/trash', [CustomerController::class, 'viewTrash'])->name('customer.trash');
-Route::get('/customer/forcedelete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.forcedelete');
-Route::get('/customer/restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
-Route::get('/customer', [CustomerController::class, 'view']);
-Route::post('/customer', [CustomerController::class, 'store']);
+//Route group.....................
+Route::group(['prefix' => '/customer'], function () {
+    Route::get('create', [CustomerController::class, 'create'])->name('customer.create');
+    Route::get('delete/{id}', [CustomerController::class, 'delete'])->name('customer.delete');
+    Route::get('edit/{id}', [CustomerController::class, 'edit'])->name('customer.edit');
+    Route::post('update/{id}', [CustomerController::class, 'update'])->name('customer.update');
+    Route::get('trash', [CustomerController::class, 'viewTrash'])->name('customer.trash');
+    Route::get('forcedelete/{id}', [CustomerController::class, 'forceDelete'])->name('customer.forcedelete');
+    Route::get('restore/{id}', [CustomerController::class, 'restore'])->name('customer.restore');
+    Route::get('/', [CustomerController::class, 'view']);
+    Route::post('/', [CustomerController::class, 'store']);
+});
 //session
 Route::get('get-all-session', function () {
     $session = session()->all();
@@ -68,3 +77,4 @@ Route::get('destroy-session', function () {
 });
 Route::get('/upload', [UploadController::class, 'uploadpage'])->name('upload-page');
 Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
+Route::get('/data', [IndexController::class, 'index']);
