@@ -77,4 +77,6 @@ Route::get('destroy-session', function () {
 });
 Route::get('/upload', [UploadController::class, 'uploadpage'])->name('upload-page');
 Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
+//relationship
 Route::get('/data', [IndexController::class, 'index']);
+Route::get('/group', [IndexController::class, 'group']);
