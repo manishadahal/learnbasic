@@ -78,5 +78,19 @@ Route::get('destroy-session', function () {
 Route::get('/upload', [UploadController::class, 'uploadpage'])->name('upload-page');
 Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
 //relationship
-Route::get('/data', [IndexController::class, 'index']);
-Route::get('/group', [IndexController::class, 'group']);
+// Route::get('/data', [IndexController::class, 'index']);
+// Route::get('/group', [IndexController::class, 'group']);
+Route::get('/data', [IndexController::class, 'index'])->middleware('guard');
+Route::get('/group', [IndexController::class, 'group'])->middleware('guard');
+Route::get('/no-access', function () {
+    echo "You are not access to the page";
+    die;
+});
+Route::get('/login', function () {
+    session()->put('user_id', 1);
+    return redirect('/');
+});
+Route::get('/logout', function () {
+    session()->forgot('user_id');
+    return redirect('/');
+});
