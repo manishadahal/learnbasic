@@ -28,10 +28,15 @@ class CustomerController extends Controller
         $customer->save();
         return redirect('/customer');
     }
-    public function view()
+    public function view(Request $request)
     {
-        $customers = Customer::all();
-        $data = compact('customers');
+        $search = $request['search'] ?? "";
+        if ($search != "") {
+            $customers = Customer::where('name', 'LIKE', "$search%")->orWhere('phonenumber', 'LIKE', "$search%")->get();
+        } else {
+            $customers = Customer::paginate(10);
+        }
+        $data = compact('customers', 'search');
         return view('customer-view')->with($data);
     }
     public function viewTrash()
