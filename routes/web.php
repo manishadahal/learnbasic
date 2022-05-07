@@ -79,7 +79,7 @@ Route::get('/upload', [UploadController::class, 'uploadpage'])->name('upload-pag
 Route::post('/upload', [UploadController::class, 'upload'])->name('upload');
 //relationship
 // Route::get('/data', [IndexController::class, 'index']);
-// Route::get('/group', [IndexController::class, 'group']);
+// Route::get('/group/{group}', [IndexController::class, 'group']);
 Route::get('/data', [IndexController::class, 'index'])->middleware('guard');
 Route::get('/group', [IndexController::class, 'group'])->middleware('guard');
 Route::get('/no-access', function () {

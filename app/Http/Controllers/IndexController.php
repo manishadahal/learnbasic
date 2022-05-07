@@ -13,9 +13,10 @@ class IndexController extends Controller
         // return Member::with('getGroup')->get();
         return Member::with('group')->get();
     }
-    public function group()
+    public function group(Group $group)
     {
-        // return Group::get();
+        return Group::get();
         return Group::with('member')->get();
+        return $group;
     }
 }
