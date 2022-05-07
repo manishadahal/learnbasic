@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class WebGuard
+class LoggedInCheck
 {
     /**
      * Handle an incoming request.
@@ -16,14 +16,9 @@ class WebGuard
      */
     public function handle(Request $request, Closure $next)
     {
-        echo $request->age;
-        if ($request->age < 18) {
-            echo "You are not allowed to access this page";
-            die;
-        }
         if (session()->has('user_id'))
             return $next($request);
         else
-            return redirect('no-access');
+            return redirect('/no-access');
     }
 }
